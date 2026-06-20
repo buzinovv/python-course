@@ -24,3 +24,4 @@ gaming_laptop1 = GamingLaptop("ASUS", "RTX 5080", 32, "Да")
 print(f"Хватает ОЗУ для игры?: {laptop1.gpu_for_game(64)}")
 print(laptops)
 #ТЕСТОВЫЙ КОММЕНТАРИЙ
+#тестовый комментарий
