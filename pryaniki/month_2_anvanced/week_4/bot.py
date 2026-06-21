@@ -13,7 +13,12 @@ dp = Dispatcher()
 @dp.message(Command("start"))
 async def cmd_start(message: types.Message):
     await message.answer(f"Привет, {message.from_user.first_name}! Я твой первый бот 🎉")
-
+@dp.message(Command("help"))
+async def cmd_help(message: types.Message):
+    await message.answer(f"{message.from_user.first_name}, вот список всех доступных команд:\n"
+                         f"/start - Приветствие\n"
+                         f"/help - Список команд"
+                         )
 async def main():
     await dp.start_polling(bot)
 
