@@ -1,4 +1,7 @@
 import asyncio
+import time
+
+
 
 async def load_profile(user, delay):
     print("Загружаю профиль...")
@@ -14,4 +17,6 @@ async def load_recommendations(user, delay):
     print("Рекомендации загружены")
 async def main():
     await asyncio.gather(load_profile("Миша", 1), load_orders("Миша", 2), load_recommendations("Миша", 3))
+start = time.time()
 asyncio.run(main())
+print(f"Всего времени: {time.time() - start:.2f} сек")
