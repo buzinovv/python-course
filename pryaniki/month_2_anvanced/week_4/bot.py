@@ -3,6 +3,9 @@ import os
 from dotenv import load_dotenv
 from aiogram import Bot, Dispatcher, types
 from aiogram.filters import Command
+from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+
+#button = InlineKeyboardButton(text="Привет", callback_data="hello")
 
 load_dotenv()
 BOT_TOKEN = os.getenv("BOT_TOKEN")
@@ -19,7 +22,14 @@ async def cmd_help(message: types.Message):
                          f"/start - Приветствие\n"
                          f"/help - Список команд"
                          )
+@dp.message(Command("roll"))
+async def cmd_roll(message: types.Message):
+    import random
+    number = random.randint(1, 6)
+    await message.answer(f"{message.from_user.first_name}, ты выбросил число: {number}")
+
 async def main():
     await dp.start_polling(bot)
 
 asyncio.run(main())
+
